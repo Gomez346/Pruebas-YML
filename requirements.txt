@@ -4,3 +4,6 @@ pydantic
 httpx
 pytest
 python-multipart
+pytest==8.3.3
+pytest-cov==5.0.0
+requests==2.32.3
