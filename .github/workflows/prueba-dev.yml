@@ -1,0 +1,30 @@
+name: CI pruebas automatizadas en dev
+on:
+  push:
+      branches:
+          - dev
+  pull_request:
+      branches:
+          - dev
+
+jobs:
+    test_app:
+        name: Ejecutar pruebas Python
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout del codigo
+              uses: actions/checkout@v5
+            - name: configurar el entorno de python
+              uses: actions/setup-python@v5
+              with:
+                  python-version: "3.13"
+            - name: Instalar dependencias del proyecto
+              run: |
+                python -m pip install --upgrade pip
+                pip install -r requiremrnts.txt
+            - name: Ejecutar las pruebas ( Unit, Integracion, E2E)
+              run: |
+                  echo "empezamos con als pruebas de piton"
+                  pythin -m pystest --rootdir . -s
+            - name: Reporte Final
+              run: echo "Preubas aprobadas verifique resultados"
