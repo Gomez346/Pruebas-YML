@@ -34,17 +34,17 @@ jobs:
       - name: Ejecutar pruebas UNIT
         run: |
           echo "▶ Ejecutando pruebas UNIT..."
-          python -m pytest tests/ -m unit --cov=app --cov-report=term-missing
+          python -m pytest tests/ --cov=app --cov-report=term-missing
 
       - name: Ejecutar pruebas INTEGRACIÓN
         run: |
           echo "▶ Ejecutando pruebas de INTEGRACIÓN..."
-          python -m pytest tests/ -m integration -v
+          python -m pytest tests/ -v
 
       - name: Ejecutar pruebas E2E
         run: |
           echo "▶ Ejecutando pruebas E2E..."
-          python -m pytest tests/ -m e2e -v
+          python -m pytest tests/ -v
 
       - name: Reporte final
         if: always()
